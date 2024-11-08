@@ -31,13 +31,27 @@
   padding: 20px; /* Add some padding */
   color: white; /* Text color */
   z-index: 1; /* Ensure text is above the background */
-  left: 30%;
+  left: 20%;
   gap: 20px;
   width: 300px;
+  font-size: 48px;
 }
 h1 {
   font-family: rocabetrial;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+    /* White glow */ 0 0 10px rgba(255, 255, 255, 0.6),
+    /* White glow */ 0 0 15px rgba(0, 255, 255, 1),
+    /* Cyan glow */ 0 0 20px rgba(0, 255, 255, 0.8); /* Cyan glow */
 }
+
+h4 {
+  font-family: vergilia;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+    /* White glow */ 0 0 10px rgba(255, 255, 255, 0.6),
+    /* White glow */ 0 0 15px rgba(255, 255, 0, 1),
+    /* Yellow glow */ 0 0 20px rgba(255, 255, 0, 0.8); /* Yellow glow */
+}
+
 .image-container {
   position: absolute; /* For positioning the images */
   flex: 1; /* Take up remaining space */
@@ -56,10 +70,42 @@ h1 {
 
 .right-image {
   position: absolute; /* Position it over the background */
-  top: 25%; /* Adjust as needed */
+  bottom: 5%; /* Adjust as needed */
   right: 10%; /* Adjust as needed */
   max-width: 70%; /* Set a max width for the right image */
   height: 70%; /* Maintain aspect ratio */
   z-index: 1; /* Ensure it is above the background image */
+}
+/* Responsive Styles */
+@media (max-width: 1100px) {
+  h1 {
+    font-size: 50px;
+  }
+  h4 {
+    font-size: 46px;
+  }
+}
+@media (max-width: 650px) {
+  .right-image {
+    width: 267px; /* Set width to 45% when screen size is 500px or less */
+    height: 451px;
+    bottom: 8%; /* Keep it at the top */
+    right: 50%; /* Center it horizontally */
+    transform: translateX(50%); /* Adjust for centering */
+  }
+
+  .text-container {
+    position: absolute; /* Position text above the image */
+    top: 18%; /* Adjust as needed to position above the image */
+    left: 50%; /* Center text */
+    transform: translateX(-50%); /* Adjust for centering */
+    width: auto; /* Allow text width to adjust */
+  }
+  h1 {
+    font-size: 42px;
+  }
+  h4 {
+    display: none;
+  }
 }
 </style>

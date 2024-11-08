@@ -16,3 +16,7 @@
   src: url("/fonts/RocabetrialRegular.otf") format("opentype"),
     url("/fonts/RocabetrialRegular.ttf") format("opentype");
 }
+@font-face {
+  font-family: "vergilia";
+  src: url("/fonts/VergiliaRegular.ttf") format("opentype");
+}
