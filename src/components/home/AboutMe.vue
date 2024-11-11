@@ -1,4 +1,5 @@
 <script setup></script>
+
 <template>
   <div class="about-me">
     <div class="content_left">
@@ -7,28 +8,29 @@
     </div>
     <div class="content_right">
       <p>
-        <!-- Your description text goes here -->
-        Hi! I'm [Your Name], a passionate developer with a love for creating
-        amazing applications. I enjoy working with Vue.js and exploring new
-        technologies.
+        "Soy Estefanía Sandoval, diseñadora apasionada por la creación, el mundo
+        digital y el lenguaje informático. Con conocimientos sólidos en
+        marketing y experiencia en diversos programas de Adobe y herramientas de
+        diseño, siempre estoy en busca de nuevas ideas y oportunidades de
+        aprendizaje. Mi enfoque es combinar creatividad y tecnología para
+        desarrollar proyectos innovadores. Me considero una persona curiosa y
+        detallista, comprometida con aprovechar al máximo la tecnología en cada
+        proyecto y compartir ideas en un entorno colaborativo."
       </p>
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: "AboutMe",
-};
-</script>
 
 <style scoped>
 .about-me {
   display: flex;
   justify-content: center; /* Center the content horizontally */
   align-items: center; /* Center the content vertically */
-  padding: 20px;
-  gap: 20px; /* Space between left and right content */
+  padding: 60px; /* Increase padding for a larger section */
+  gap: 60px; /* Increase space between left and right content */
+  background-color: #f9f9f9; /* Optional: Add a background color */
+  border-radius: 10px; /* Optional: Add rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
 }
 
 .content_left {
@@ -38,17 +40,22 @@ export default {
 }
 
 .title {
-  font-size: 24px;
-  margin-bottom: 10px; /* Space below the title */
+  font-size: 32px; /* Increase font size of the title */
+  margin-bottom: 20px; /* Space below the title */
+  color: #333; /* Optional: Change title color */
 }
 
 .image-placeholder {
-  width: 150px; /* Adjust width as needed */
-  height: 150px; /* Adjust height as needed */
+  width: 200px; /* Increase width of the image placeholder */
+  height: 200px; /* Increase height of the image placeholder */
   background-color: #ccc; /* Placeholder color */
+  border-radius: 10px; /* Optional: Add rounded corners */
 }
 
 .content_right {
-  max-width: 400px; /* Set a max width for the text content */
+  max-width: 600px; /* Increase max width for the text content */
+  font-size: 18px; /* Increase font size for the text */
+  line-height: 1.4; /* Improve line height for readability */
+  color: #555; /* Optional: Change text color */
 }
 </style>
