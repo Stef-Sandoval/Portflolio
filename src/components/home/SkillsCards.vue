@@ -20,7 +20,6 @@ const skillCards = [1, 2, 3, 4]; // This can be an array of your skill card data
 .section-container {
   background-color: purple; /* Purple background for the section */
   padding: 20px 0; /* Reduced padding to create a more compact section */
-  overflow: hidden; /* Hide overflow to create a clean edge */
   position: relative; /* Position relative for absolute children */
 }
 
@@ -28,19 +27,19 @@ const skillCards = [1, 2, 3, 4]; // This can be an array of your skill card data
   display: flex;
   justify-content: center;
   align-items: flex-start; /* Align items to the top */
-  height: 60vh; /* Height of the skill card section */
   position: relative; /* Position relative for absolute children */
+  gap: 20px; /* Gap between skill cards */
+  flex-wrap: wrap; /* Wrap cards to the next line */
+  padding: 30px 0px;
 }
 
 .skill-card {
-  width: 200px; /* Set a fixed width for cards */
-  height: 300px; /* Set a fixed height for cards */
-  margin: 0 15px; /* Add some margin between cards */
+  flex: 0 0 auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
   border-radius: 10px; /* Rounded corners */
   background-color: white; /* Card background */
   position: relative; /* Position relative to allow for upward movement */
-  top: -80px; /* Start above the section for the invading effect */
+  top: -90px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
   animation: invade 0.5s forwards; /* Animation for the invading effect */
 }

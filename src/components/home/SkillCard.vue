@@ -1,20 +1,23 @@
 <template>
   <div class="card-container">
-    <img src="/public/img/Card.png" alt="Card image" class="card-image" />
+    <img src="/img/Card.png" alt="Card image" class="card-image" />
   </div>
 </template>
 
 <style scoped>
 .card-container {
+  width: 200px; /* Set the width of the card container */
+  height: 260px; /* Set the height of the card container */
   display: flex; /* Use Flexbox for layout */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  height: 100vh; /* Full viewport height */
+  overflow: hidden;
 }
 
 .card-image {
-  width: 60%; /* Set the width of the image */
+  width: 100%; /* Set the width of the image */
   height: auto; /* Maintain aspect ratio */
+  top: 10px; /* Position the image slightly above the container */
   animation: float 3s ease-in-out infinite; /* Floating animation */
 }
 
