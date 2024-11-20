@@ -6,8 +6,15 @@
       @mouseleave="hover = false"
       :style="cardStyle"
     >
-      <h2>{{ title }}</h2>
-      <p>{{ description }}</p>
+      <img
+        v-if="project.img_1"
+        :src="project.img_1"
+        alt="Project Image"
+        class="project-image"
+      />
+      <h2>{{ project.Nombre }}</h2>
+      <p class="category">{{ project.Categoria }}</p>
+      <p v-if="hover">{{ project.description }}</p>
     </div>
   </div>
 </template>
@@ -15,13 +22,9 @@
 <script setup>
 import { ref, computed } from "vue";
 
-defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
+const props = defineProps({
+  project: {
+    type: Object,
     required: true,
   },
 });
@@ -56,9 +59,20 @@ const cardStyle = computed(() => ({
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.project-image {
+  width: 100%; /* Full width of the card */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Rounded corners for the image */
+}
+
 .project-card h2 {
   font-size: 2em;
   transition: text-shadow 0.3s;
+}
+
+.project-card .category {
+  font-size: 1.2em;
+  color: #777; /* Gray color for category */
 }
 
 .project-card p {

@@ -1,15 +1,13 @@
 <template>
   <div class="main-container">
     <div class="image-container">
-      <!-- Marcador de posición para la imagen -->
       <div class="placeholder-image">Imagen aquí</div>
     </div>
     <div class="cards-container">
       <ProjectCard
         v-for="(project, index) in projects"
         :key="index"
-        :title="project.title"
-        :description="project.description"
+        :project="project"
       />
     </div>
   </div>
@@ -17,20 +15,20 @@
 
 <script setup>
 import ProjectCard from "@/components/skills/ProjectCard.vue";
-import { ref } from "vue";
-import { database } from "@/lib/database";
+import { ref, onMounted } from "vue";
+import { database } from "@/lib/database"; // Asegúrate de que este archivo devuelva una promesa
 
-console.log(database);
+const projects = ref([]); // Inicializa un array reactivo para almacenar los proyectos
 
-// Datos de ejemplo para las tarjetas de proyecto
-const projects = ref([
-  { title: "Proyecto 1", description: "Descripción del Proyecto 1" },
-  { title: "Proyecto 2", description: "Descripción del Proyecto 2" },
-  { title: "Proyecto 3", description: "Descripción del Proyecto 3" },
-  { title: "Proyecto 4", description: "Descripción del Proyecto 4" },
-  { title: "Proyecto 5", description: "Descripción del Proyecto 5" },
-  { title: "Proyecto 6", description: "Descripción del Proyecto 6" },
-]);
+onMounted(async () => {
+  try {
+    // Espera a que la promesa se resuelva
+    projects.value = await database; // Asigna el resultado a la variable reactiva
+    console.log(database);
+  } catch (error) {
+    console.error("Error al cargar los proyectos:", error); // Manejo de errores
+  }
+});
 </script>
 
 <style scoped>
