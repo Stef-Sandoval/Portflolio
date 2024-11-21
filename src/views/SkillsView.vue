@@ -1,30 +1,34 @@
 <template>
   <div class="main-container">
-    <div class="image-container">
-      <div class="placeholder-image">Imagen aquí</div>
-    </div>
-    <div class="cards-container">
-      <ProjectCard
-        v-for="(project, index) in projects"
-        :key="index"
-        :project="project"
+    <div class="section-head-image-container">
+      <img
+        src="/img/Iustracioncardimg.png"
+        alt="Section image"
+        class="section-image"
       />
+      <span class="section-title">Ilustración</span>
+      <img src="/img/Cardforskills.png" alt="Card image" class="card-image" />
     </div>
+  </div>
+  <div class="cards-container">
+    <ProjectCard
+      v-for="(project, index) in projects"
+      :key="index"
+      :project="project"
+    />
   </div>
 </template>
 
 <script setup>
 import ProjectCard from "@/components/skills/ProjectCard.vue";
 import { ref, onMounted } from "vue";
-import { database } from "@/lib/database"; // Asegúrate de que este archivo devuelva una promesa
+import { database } from "@/lib/database";
 
 const projects = ref([]); // Inicializa un array reactivo para almacenar los proyectos
 
 onMounted(async () => {
   try {
-    // Espera a que la promesa se resuelva
     projects.value = await database; // Asigna el resultado a la variable reactiva
-    console.log(database);
   } catch (error) {
     console.error("Error al cargar los proyectos:", error); // Manejo de errores
   }
@@ -32,74 +36,89 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+/* General container */
 .main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
 }
 
-.image-container {
-  margin-bottom: 20px; /* Espacio entre la imagen y las tarjetas */
-}
-
-.placeholder-image {
-  width: 600px; /* Ancho completo */
-  height: 300px; /* Altura mayor para el marcador de posición */
-  max-width: 1200px; /* Ancho máximo para el marcador de posición */
-  background-color: #e0e0e0; /* Color de fondo gris claro */
+.section-head-image-container {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px; /* Esquinas redondeadas */
-  font-size: 24px; /* Tamaño del texto */
-  color: #555; /* Color del texto */
+  position: relative;
 }
 
+/* Animated image */
+.section-image {
+  position: absolute;
+  border-radius: 999px;
+  width: 150px;
+  height: 150px;
+  top: 50%;
+  left: -20%; /* Fuera del contenedor inicialmente */
+  transform: translateY(-50%) rotate(0deg);
+  z-index: 10;
+  animation: slideInRotate 2s ease-in-out forwards;
+}
+
+/* Title text */
+.section-title {
+  position: absolute;
+  font-size: 6rem;
+  font-weight: bold;
+  font-family: vergilia;
+  color: #f9e5f0;
+  opacity: 0;
+  top: 60%;
+  left: 30%;
+  z-index: 10;
+  transform: translateY(-50%);
+  animation: fadeInText 1000ms ease-in-out 1s forwards; /* Comienza después de la animación de la imagen */
+}
 .cards-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Tres tarjetas por fila */
-  gap: 20px; /* Espacio entre tarjetas */
-  width: 100%; /* Ancho completo del contenedor padre */
-  max-width: 1200px; /* Ancho máximo para el contenedor de tarjetas */
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+/* Card image */
+.card-image {
+  width: 80%;
+  height: 70%;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
 }
 
-.project-card {
-  position: relative; /* Posicionamiento relativo para el texto */
-  background-color: #ffffff; /* Fondo blanco para las tarjetas */
-  border: 1px solid #ccc; /* Borde gris */
-  border-radius: 10px; /* Esquinas redondeadas */
-  padding: 20px; /* Espaciado interno */
-  overflow: hidden; /* Ocultar contenido que desborda */
-  transition: transform 0.3s; /* Transición suave para el hover */
+/* Animations */
+
+/* Imagen entra deslizándose y girando */
+@keyframes slideInRotate {
+  from {
+    left: 100%;
+    transform: translateY(-50%) rotate(360deg); /* Inicia girando rápido */
+  }
+  to {
+    left: 3.5%; /* Posición final */
+    transform: translateY(-50%) rotate(0deg); /* Termina sin rotación */
+  }
 }
 
-.project-card:hover {
-  transform: scale(1.05); /* Aumentar el tamaño en hover */
-}
-
-.project-card .title,
-.project-card .description {
-  position: absolute; /* Posicionamiento absoluto */
-  left: 20px; /* Espacio desde la izquierda */
-  opacity: 0; /* Ocultar por defecto */
-  transition: opacity 0.3s; /* Transición suave para la opacidad */
-}
-
-.project-card .title {
-  top: 20px; /* Espacio desde la parte superior */
-  font-size: 1.5em; /* Tamaño del texto del título */
-}
-
-.project-card .description {
-  bottom: 20px; /* Espacio desde la parte inferior */
-  background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
-  padding: 10px; /* Espaciado interno */
-  border-radius: 5px; /* Esquinas redondeadas */
-}
-
-.project-card:hover .title,
-.project-card:hover .description {
-  opacity: 1; /* Mostrar al pasar el ratón */
+/* Texto aparece con opacidad */
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.8); /* Aparece pequeño */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1); /* Tamaño final */
+  }
 }
 </style>

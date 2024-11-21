@@ -1,5 +1,12 @@
+<script setup>
+defineProps({
+  img_url: String,
+});
+</script>
+
 <template>
   <div class="card-container">
+    <img class="skill_img" :src="img_url" alt="" />
     <img src="/img/Card.png" alt="Card image" class="card-image" />
   </div>
 </template>
@@ -19,6 +26,14 @@
   height: auto; /* Maintain aspect ratio */
   top: 10px; /* Position the image slightly above the container */
   animation: float 3s ease-in-out infinite; /* Floating animation */
+}
+
+.skill_img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 99;
 }
 
 /* Floating animation */

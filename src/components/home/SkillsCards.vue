@@ -1,7 +1,12 @@
 <script setup>
 import SkillCard from "@/components/home/SkillCard.vue";
 
-const skillCards = [1, 2, 3, 4]; // This can be an array of your skill card data
+const skillCards = [
+  { img_url: "/img/Iustracioncardimg.png" },
+  { img_url: "/img/webcardimg.png" },
+  { img_url: "/img/3Dimgcard2.png" },
+  { img_url: "/img/Videogamescardimg.png" },
+]; // Array de datos con las rutas de las imágenes
 </script>
 
 <template>
@@ -11,6 +16,7 @@ const skillCards = [1, 2, 3, 4]; // This can be an array of your skill card data
         v-for="(card, index) in skillCards"
         :key="index"
         class="skill-card"
+        :img_url="card.img_url"
       />
     </div>
   </div>
@@ -18,45 +24,43 @@ const skillCards = [1, 2, 3, 4]; // This can be an array of your skill card data
 
 <style scoped>
 .section-container {
-  background-color: purple; /* Purple background for the section */
-  padding: 20px 0; /* Reduced padding to create a more compact section */
-  position: relative; /* Position relative for absolute children */
+  background-color: purple;
+  padding: 20px 0;
+  position: relative;
 }
 
 .skill-card-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Align items to the top */
-  position: relative; /* Position relative for absolute children */
-  gap: 20px; /* Gap between skill cards */
-  flex-wrap: wrap; /* Wrap cards to the next line */
+  align-items: flex-start;
+  position: relative;
+  gap: 20px;
+  flex-wrap: wrap;
   padding: 30px 0px;
 }
 
 .skill-card {
   flex: 0 0 auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
-  border-radius: 10px; /* Rounded corners */
-  background-color: white; /* Card background */
-  position: relative; /* Position relative to allow for upward movement */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  background-color: white;
+  position: relative;
   top: -90px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-  animation: invade 0.5s forwards; /* Animation for the invading effect */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: invade 0.5s forwards;
 }
 
-/* Animation for the invading effect */
 @keyframes invade {
   0% {
-    top: -80px; /* Start above the section */
+    top: -80px;
   }
   100% {
-    top: 0; /* End at the normal position */
+    top: 0;
   }
 }
 
-/* Hover effects */
 .skill-card:hover {
-  transform: translateY(-20px) scale(1.1) rotate(2deg); /* Raise and scale the hovered card */
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+  transform: translateY(-20px) scale(1.1) rotate(2deg);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 </style>
