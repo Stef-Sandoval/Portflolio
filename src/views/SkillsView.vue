@@ -6,7 +6,7 @@
         alt="Section image"
         class="section-image"
       />
-      <span class="section-title">Ilustración</span>
+      <span class="section-title">{{ route.params.skill }}</span>
       <img src="/img/Cardforskills.png" alt="Card image" class="card-image" />
     </div>
   </div>
@@ -23,12 +23,17 @@
 import ProjectCard from "@/components/skills/ProjectCard.vue";
 import { ref, onMounted } from "vue";
 import { database } from "@/lib/database";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
 
 const projects = ref([]); // Inicializa un array reactivo para almacenar los proyectos
 
 onMounted(async () => {
+  let result;
   try {
-    projects.value = await database; // Asigna el resultado a la variable reactiva
+    result = await database;
+    projects.value = result.filter((e) => e.categoria == route.params.skill); // Asigna el resultado a la variable reactiva
   } catch (error) {
     console.error("Error al cargar los proyectos:", error); // Manejo de errores
   }
@@ -41,6 +46,7 @@ onMounted(async () => {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
 
 .section-head-image-container {
@@ -69,13 +75,14 @@ onMounted(async () => {
 /* Title text */
 .section-title {
   position: absolute;
+  text-transform: capitalize;
   font-size: 6rem;
   font-weight: bold;
   font-family: vergilia;
   color: #f9e5f0;
   opacity: 0;
-  top: 60%;
-  left: 30%;
+  text-align: center;
+  top: 65%;
   z-index: 10;
   transform: translateY(-50%);
   animation: fadeInText 1000ms ease-in-out 1s forwards; /* Comienza después de la animación de la imagen */

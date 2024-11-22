@@ -13,7 +13,7 @@
         class="project-image"
       />
       <h2>{{ project.Nombre }}</h2>
-      <p class="category">{{ project.Categoria }}</p>
+      <p class="category">{{ project.categoria }}</p>
       <p v-if="hover" class="description">{{ project.description }}</p>
     </div>
   </div>
