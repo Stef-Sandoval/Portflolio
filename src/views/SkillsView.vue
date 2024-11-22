@@ -1,11 +1,13 @@
 <template>
   <div class="main-container">
     <div class="section-head-image-container">
+      <!-- Imagen dinámica -->
       <img
-        src="/img/Iustracioncardimg.png"
+        :src="getImageForCategory(route.params.skill)"
         alt="Section image"
         class="section-image"
       />
+      <!-- Título dinámico -->
       <span class="section-title">{{ route.params.skill }}</span>
       <img src="/img/Cardforskills.png" alt="Card image" class="card-image" />
     </div>
@@ -27,21 +29,34 @@ import { useRoute } from "vue-router";
 
 const route = useRoute();
 
-const projects = ref([]); // Inicializa un array reactivo para almacenar los proyectos
+const projects = ref([]);
+
+// Objeto para mapear categorías con imágenes
+const categoryImages = {
+  ilustracion: "/img/Iustracioncardimg.png",
+  web: "/img/webcardimg.png",
+  "3d": "/img/3Dimgcard2.png",
+  videojuegos: "/img/Videogamescardimg.png",
+};
+
+// Función para obtener la imagen según la categoría
+const getImageForCategory = (category) => {
+  console.log(categoryImages[category]);
+  return categoryImages[category] || "/img/defaultcardimg.png"; // Imagen por defecto si no hay coincidencia
+};
 
 onMounted(async () => {
-  let result;
   try {
-    result = await database;
-    projects.value = result.filter((e) => e.categoria == route.params.skill); // Asigna el resultado a la variable reactiva
+    const result = await database;
+    projects.value = result.filter((e) => e.categoria == route.params.skill);
   } catch (error) {
-    console.error("Error al cargar los proyectos:", error); // Manejo de errores
+    console.error("Error al cargar los proyectos:", error);
   }
 });
 </script>
 
 <style scoped>
-/* General container */
+/* Estilos generales */
 .main-container {
   display: flex;
   flex-direction: column;
@@ -59,14 +74,14 @@ onMounted(async () => {
   position: relative;
 }
 
-/* Animated image */
+/* Imagen dinámica */
 .section-image {
   position: absolute;
   border-radius: 999px;
   width: 150px;
   height: 150px;
   top: 50%;
-  left: -20%; /* Fuera del contenedor inicialmente */
+  left: -20%;
   transform: translateY(-50%) rotate(0deg);
   z-index: 10;
   animation: slideInRotate 2s ease-in-out forwards;
@@ -87,6 +102,7 @@ onMounted(async () => {
   transform: translateY(-50%);
   animation: fadeInText 1000ms ease-in-out 1s forwards; /* Comienza después de la animación de la imagen */
 }
+
 .cards-container {
   width: 100%;
   display: flex;
