@@ -44,7 +44,7 @@ onMounted(async () => {
 }
 
 .section-head-image-container {
-  width: 100%;
+  width: 105%;
   height: 200px;
   margin-bottom: 20px;
   display: flex;
@@ -86,6 +86,7 @@ onMounted(async () => {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  gap: 40px;
 }
 /* Card image */
 .card-image {
@@ -105,7 +106,7 @@ onMounted(async () => {
     transform: translateY(-50%) rotate(360deg); /* Inicia girando rápido */
   }
   to {
-    left: 3.5%; /* Posición final */
+    left: 4%; /* Posición final */
     transform: translateY(-50%) rotate(0deg); /* Termina sin rotación */
   }
 }

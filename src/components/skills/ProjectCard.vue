@@ -41,20 +41,11 @@ const cardStyle = computed(() => ({
 </script>
 
 <style scoped>
-.card-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Full viewport height for centering */
-}
-
 .project-card {
-  width: 90%; /* Flexible width */
-  max-width: 400px; /* Maximum width */
-  height: auto;
+  width: 400px; /* Ancho fijo */
+  height: 400px; /* Alto fijo */
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
-  padding: 20px;
   text-align: center;
   position: relative;
   cursor: pointer;
@@ -63,28 +54,37 @@ const cardStyle = computed(() => ({
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end; /* Alinea el contenido hacia abajo */
 }
 
 .project-image {
   width: 100%;
-  height: auto;
-  border-radius: 10px;
+  height: 100%; /* La imagen ocupa el 100% de la tarjeta */
+  object-fit: cover; /* Asegura que la imagen no se deforme */
+  position: absolute; /* Coloca la imagen como fondo */
+  top: 0;
+  left: 0;
 }
 
 .project-card h2 {
-  font-size: 2em;
+  font-size: 1.5em;
+  margin-top: 10px;
   transition: text-shadow 0.3s ease-in-out;
+  color: #fff;
+  z-index: 2; /* Asegura que el texto esté encima de la imagen */
 }
 
 .project-card .category {
   font-size: 1.2em;
-  color: #777;
+  color: #fff;
+  z-index: 2; /* Asegura que el texto esté encima de la imagen */
 }
 
 .project-card p.description {
   font-size: 1.2em;
   transition: opacity 0.3s ease-in-out;
   opacity: 0;
+  z-index: 2; /* Asegura que el texto esté encima de la imagen */
 }
 
 .project-card:hover h2 {
@@ -92,6 +92,6 @@ const cardStyle = computed(() => ({
 }
 
 .project-card:hover .description {
-  opacity: 1; /* Show description on hover */
+  opacity: 1; /* Muestra la descripción en el hover */
 }
 </style>
