@@ -1,11 +1,12 @@
 <template>
   <div class="main-container">
     <div class="section-head-image-container">
-      <!-- Imagen dinámica -->
+      <!-- Imagen dinámica con redirección al hacer clic -->
       <img
         :src="getImageForCategory(route.params.skill)"
         alt="Section image"
         class="section-image"
+        @click="redirectToHome"
       />
       <!-- Título dinámico -->
       <span class="section-title">{{ route.params.skill }}</span>
@@ -25,9 +26,10 @@
 import ProjectCard from "@/components/skills/ProjectCard.vue";
 import { ref, onMounted } from "vue";
 import { database } from "@/lib/database";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router"; // Importa useRouter para la navegación
 
 const route = useRoute();
+const router = useRouter(); // Inicializa el router
 
 const projects = ref([]);
 
@@ -45,10 +47,15 @@ const getImageForCategory = (category) => {
   return categoryImages[category] || "/img/defaultcardimg.png"; // Imagen por defecto si no hay coincidencia
 };
 
+// Función para redirigir al Home
+const redirectToHome = () => {
+  router.push({ name: "home" }); // Asegúrate de que "home" coincida con el nombre de la ruta en tu router
+};
+
 onMounted(async () => {
   try {
     const result = await database;
-    projects.value = result.filter((e) => e.categoria == route.params.skill);
+    projects.value = result.filter((e) => e.categoria === route.params.skill);
   } catch (error) {
     console.error("Error al cargar los proyectos:", error);
   }
@@ -85,6 +92,7 @@ onMounted(async () => {
   transform: translateY(-50%) rotate(0deg);
   z-index: 10;
   animation: slideInRotate 2s ease-in-out forwards;
+  cursor: pointer; /* Añade un puntero para indicar que es interactivo */
 }
 
 /* Title text */
@@ -111,6 +119,7 @@ onMounted(async () => {
   justify-content: center;
   gap: 40px;
 }
+
 /* Card image */
 .card-image {
   width: 80%;
