@@ -1,12 +1,19 @@
 <script setup>
 import SkillCard from "@/components/home/SkillCard.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const skillCards = [
-  { img_url: "/img/Iustracioncardimg.png" },
-  { img_url: "/img/webcardimg.png" },
-  { img_url: "/img/3Dimgcard2.png" },
-  { img_url: "/img/Videogamescardimg.png" },
-]; // Array de datos con las rutas de las imágenes
+  { img_url: "/img/Iustracioncardimg.png", route: "ilustracion" },
+  { img_url: "/img/webcardimg.png", route: "web" },
+  { img_url: "/img/3Dimgcard2.png", route: "3d" },
+  { img_url: "/img/Videogamescardimg.png", route: "videojuegos" },
+];
+
+const handleCardClick = (route) => {
+  router.push(`/skills/${route}`);
+};
 </script>
 
 <template>
@@ -17,6 +24,7 @@ const skillCards = [
         :key="index"
         class="skill-card"
         :img_url="card.img_url"
+        @click="handleCardClick(card.route)"
       />
     </div>
   </div>
