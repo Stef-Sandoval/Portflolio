@@ -19,6 +19,7 @@ defineProps({
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   overflow: hidden;
+  cursor: pointer;
 }
 
 .card-image {

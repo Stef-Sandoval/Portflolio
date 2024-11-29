@@ -92,7 +92,8 @@ onMounted(async () => {
   transform: translateY(-50%) rotate(0deg);
   z-index: 10;
   animation: slideInRotate 2s ease-in-out forwards;
-  cursor: pointer; /* Añade un puntero para indicar que es interactivo */
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 }
 
 /* Title text */
@@ -153,5 +154,8 @@ onMounted(async () => {
     opacity: 1;
     transform: translateY(-50%) scale(1); /* Tamaño final */
   }
+}
+.section-image:hover {
+  transform: translateY(-50%) rotate(0deg) scale(1.1); /* Zoom del 10% */
 }
 </style>

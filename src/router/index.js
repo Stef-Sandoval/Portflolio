@@ -17,6 +17,14 @@ const router = createRouter({
       component: () => import("../views/SkillsView.vue"),
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    // Si hay una posición guardada (por ejemplo, al usar el botón "Atrás"), úsala
+    if (savedPosition) {
+      return savedPosition;
+    }
+    // Si no, regresa al tope de la página
+    return { top: 0 };
+  },
 });
 
 export default router;

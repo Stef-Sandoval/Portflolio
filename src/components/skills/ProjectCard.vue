@@ -4,6 +4,7 @@
       class="project-card"
       @mouseover="hover = true"
       @mouseleave="hover = false"
+      @click="handleClick"
       :style="cardStyle"
     >
       <img
@@ -28,6 +29,16 @@ const props = defineProps({
     required: true,
   },
 });
+
+const handleClick = () => {
+  if (props.project.url_externo) {
+    // Si `url_externo` está definido, navega al enlace externo
+    window.open(props.project.url_externo, "_blank");
+  } else {
+    // Si no está definido, no hacer nada (opcionalmente puedes loggear algo)
+    console.log("No URL provided");
+  }
+};
 
 const hover = ref(false);
 
