@@ -48,8 +48,8 @@ h4 {
   font-family: vergilia;
   text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
     /* White glow */ 0 0 10px rgba(255, 255, 255, 0.6),
-    /* White glow */ 0 0 15px rgba(255, 255, 0, 1),
-    /* Yellow glow */ 0 0 20px rgba(255, 255, 0, 0.8); /* Yellow glow */
+    /* White glow */ 0 0 15px rgb(153, 0, 255),
+    /* Yellow glow */ 0 0 20px rgba(230, 0, 255, 0.8); /* Yellow glow */
 }
 
 .image-container {
