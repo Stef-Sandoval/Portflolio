@@ -42,7 +42,7 @@
 .title {
   font-size: 32px; /* Increase font size of the title */
   margin-bottom: 20px; /* Space below the title */
-  color: #333; /* Optional: Change title color */
+  color: #3afbf4; /* Optional: Change title color */
 }
 
 .image-placeholder {
@@ -56,6 +56,28 @@
   max-width: 600px; /* Increase max width for the text content */
   font-size: 18px; /* Increase font size for the text */
   line-height: 1.4; /* Improve line height for readability */
-  color: #555; /* Optional: Change text color */
+  color: #8e3afb; /* Optional: Change text color */
+}
+
+@media (max-width: 768px) {
+  .about-me {
+    flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+    padding: 30px;
+    gap: 30px;
+  }
+
+  .title {
+    font-size: 24px; /* Reducir el tamaño del título */
+  }
+  .image-placeholder {
+    width: 100px;
+    height: 100px;
+  }
+
+  .content_right {
+    font-size: 12px; /* Reducir el tamaño del texto */
+    line-height: 1; /* Reducir la altura de línea */
+    text-align: center;
+  }
 }
 </style>

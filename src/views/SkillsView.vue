@@ -159,4 +159,19 @@ onMounted(async () => {
   transform: translateY(-50%) rotate(0deg) scale(1.1); /* Zoom del 10% */
   transform: translateY(-50%) scale(1.2);
 }
+@media (max-width: 768px) {
+  .section-image {
+    width: 100px; /* Ancho 80% */
+    height: 100px; /* Alto 80% */
+  }
+
+  .section-title {
+    font-size: 2.5rem; /* Tamaño de fuente 4rem */
+    top: 60%;
+    left: 30%;
+  }
+  .section-head-image-container {
+    height: 100px;
+  }
+}
 </style>

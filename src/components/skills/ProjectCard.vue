@@ -7,15 +7,24 @@
       @click="handleClick"
       :style="cardStyle"
     >
+      <video
+        v-if="project.url_video"
+        :src="project.url_video"
+        muted
+        loop
+        autoplay
+        playsinline
+        class="project-video"
+      ></video>
       <img
-        v-if="project.img_1"
+        v-else-if="project.img_1"
         :src="project.img_1"
         alt="Project Image"
         class="project-image"
       />
-      <h2>{{ project.Nombre }}</h2>
-      <p class="category">{{ project.categoria }}</p>
-      <p v-if="hover" class="description">{{ project.description }}</p>
+
+      <!-- El nombre aparecerá solo al hacer hover -->
+      <h2 class="project-name">{{ project.nombre }}</h2>
     </div>
   </div>
 </template>
@@ -32,10 +41,8 @@ const props = defineProps({
 
 const handleClick = () => {
   if (props.project.url_externo) {
-    // Si `url_externo` está definido, navega al enlace externo
     window.open(props.project.url_externo, "_blank");
   } else {
-    // Si no está definido, no hacer nada (opcionalmente puedes loggear algo)
     console.log("No URL provided");
   }
 };
@@ -45,17 +52,21 @@ const hover = ref(false);
 const cardStyle = computed(() => ({
   transition: "transform 0.3s, box-shadow 0.3s ease-in-out",
   transform: hover.value ? "scale(1.05)" : "scale(1)",
-  boxShadow: hover.value
-    ? "0 0 20px rgba(45, 255, 249, 0.8)" // Cambio el color del brillo aquí
-    : "none",
+  boxShadow: hover.value ? "0 0 20px rgba(45, 255, 249, 0.8)" : "none",
 }));
 </script>
 
 <style scoped>
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .project-card {
-  width: 400px; /* Ancho fijo */
-  height: 400px; /* Alto fijo */
-  background-color: rgb(255, 255, 255);
+  width: 400px;
+  height: 400px;
+  background-color: rgb(45, 228, 225);
   border-radius: 10px;
   text-align: center;
   position: relative;
@@ -65,44 +76,37 @@ const cardStyle = computed(() => ({
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end; /* Alinea el contenido hacia abajo */
+  justify-content: flex-end;
 }
 
 .project-image {
   width: 100%;
-  height: 100%; /* La imagen ocupa el 100% de la tarjeta */
-  object-fit: cover; /* Asegura que la imagen no se deforme */
-  position: absolute; /* Coloca la imagen como fondo */
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
   top: 0;
   left: 0;
 }
-
-.project-card h2 {
+.project-name {
+  color: var(--title-skill-view);
+  position: absolute;
+}
+.project-card h2.project-name {
   font-size: 1.5em;
-  margin-top: 10px;
-  transition: text-shadow 0.3s ease-in-out;
   color: #fff;
-  z-index: 2; /* Asegura que el texto esté encima de la imagen */
-}
-
-.project-card .category {
-  font-size: 1.2em;
-  color: #fff;
-  z-index: 2; /* Asegura que el texto esté encima de la imagen */
-}
-
-.project-card p.description {
-  font-size: 1.2em;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  z-index: 2;
+  opacity: 0; /* Ocultar el nombre por defecto */
   transition: opacity 0.3s ease-in-out;
-  opacity: 0;
-  z-index: 2; /* Asegura que el texto esté encima de la imagen */
+  margin: 20px 0;
 }
 
-.project-card:hover h2 {
-  text-shadow: 0 0 20px rgba(45, 255, 249, 0.8); /* Resalta el título con el nuevo color */
+.project-card:hover h2.project-name {
+  opacity: 1; /* Mostrar el nombre al hacer hover */
 }
-
-.project-card:hover .description {
-  opacity: 1; /* Muestra la descripción en el hover */
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
