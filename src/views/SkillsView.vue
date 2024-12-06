@@ -89,11 +89,11 @@ onMounted(async () => {
   height: 150px;
   top: 50%;
   left: -20%;
-  transform: translateY(-50%) rotate(0deg);
+  transform: translateY(-50%) scale(1); /* Inicia en tamaño normal */
   z-index: 10;
   animation: slideInRotate 2s ease-in-out forwards;
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.6s ease-in-out; /* Añadir transiciones suaves */
 }
 
 /* Title text */
@@ -103,7 +103,7 @@ onMounted(async () => {
   font-size: 6rem;
   font-weight: bold;
   font-family: vergilia;
-  color: #f9e5f0;
+  color: var(--title-skill-view);
   opacity: 0;
   text-align: center;
   top: 65%;
@@ -157,5 +157,6 @@ onMounted(async () => {
 }
 .section-image:hover {
   transform: translateY(-50%) rotate(0deg) scale(1.1); /* Zoom del 10% */
+  transform: translateY(-50%) scale(1.2);
 }
 </style>
