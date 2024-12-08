@@ -88,12 +88,11 @@ const cardStyle = computed(() => ({
   left: 0;
 }
 .project-name {
-  color: var(--title-skill-view);
   position: absolute;
 }
 .project-card h2.project-name {
   font-size: 1.5em;
-  color: #fff;
+  color: var(--title-skill-view);
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   z-index: 2;
   opacity: 0; /* Ocultar el nombre por defecto */
