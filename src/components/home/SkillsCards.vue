@@ -32,7 +32,7 @@ const handleCardClick = (route) => {
 
 <style scoped>
 .section-container {
-  background-color: purple;
+  background-color: var(--color-container-cards);
   padding: 20px 0;
   position: relative;
 }

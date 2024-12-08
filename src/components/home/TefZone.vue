@@ -29,7 +29,7 @@
   flex-direction: column;
   justify-content: center; /* Center text vertically */
   padding: 20px; /* Add some padding */
-  color: white; /* Text color */
+  color: var(--text-first-title);
   z-index: 1; /* Ensure text is above the background */
   left: 20%;
   gap: 20px;
@@ -38,7 +38,7 @@
 }
 h1 {
   font-family: rocabetrial;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8),
+  text-shadow: 0 0 5px rgba(222, 178, 241, 0.8),
     /* White glow */ 0 0 10px rgba(255, 255, 255, 0.6),
     /* White glow */ 0 0 15px rgba(0, 255, 255, 1),
     /* Cyan glow */ 0 0 20px rgba(0, 255, 255, 0.8); /* Cyan glow */

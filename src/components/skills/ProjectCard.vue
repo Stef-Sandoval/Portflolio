@@ -92,8 +92,9 @@ const cardStyle = computed(() => ({
 }
 .project-card h2.project-name {
   font-size: 1.5em;
+  font-family: rocabetrial;
   color: var(--title-skill-view);
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 10px var(--text-cardproject-shadow);
   z-index: 2;
   opacity: 0; /* Ocultar el nombre por defecto */
   transition: opacity 0.3s ease-in-out;
