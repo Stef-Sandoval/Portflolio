@@ -4,7 +4,11 @@
   <div class="about-me">
     <div class="content_left">
       <h2 class="title">About Me</h2>
-      <div class="image-placeholder"></div>
+      <img
+        src="/img/portafolio2png.png"
+        alt="Imagen del portafolio"
+        class="profile-image"
+      />
     </div>
     <div class="content_right">
       <p>
@@ -45,9 +49,9 @@
   color: #3afbf4; /* Optional: Change title color */
 }
 
-.image-placeholder {
-  width: 200px; /* Increase width of the image placeholder */
-  height: 200px; /* Increase height of the image placeholder */
+.profile-image {
+  width: 350px; /* Increase width of the image placeholder */
+  height: 350px; /* Increase height of the image placeholder */
   background-color: #ccc; /* Placeholder color */
   border-radius: 10px; /* Optional: Add rounded corners */
 }
