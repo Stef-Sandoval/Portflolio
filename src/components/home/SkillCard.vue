@@ -1,13 +1,16 @@
 <script setup>
 defineProps({
   img_url: String,
+  title: String, // Nuevo: Define una propiedad para el título
 });
 </script>
 
 <template>
   <div class="card-container">
-    <img class="skill_img" :src="img_url" alt="" />
-    <img src="/img/Card.png" alt="Card image" class="card-image" />
+    <img class="skill_img" :src="img_url" alt="Skill Image" />
+    <div class="overlay">
+      <span class="title">{{ title }}</span>
+    </div>
   </div>
 </template>
 
@@ -20,13 +23,7 @@ defineProps({
   align-items: center; /* Center vertically */
   overflow: hidden;
   cursor: pointer;
-}
-
-.card-image {
-  width: 100%; /* Set the width of the image */
-  height: auto; /* Maintain aspect ratio */
-  top: 10px; /* Position the image slightly above the container */
-  animation: float 3s ease-in-out infinite; /* Floating animation */
+  position: relative; /* Necessary for overlay positioning */
 }
 
 .skill_img {
@@ -34,17 +31,31 @@ defineProps({
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 99;
+  z-index: 1;
 }
 
-/* Floating animation */
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0); /* Start and end at original position */
-  }
-  50% {
-    transform: translateY(-10px); /* Move up 10 pixels */
-  }
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 255, 221, 0.5); /* Semi-transparent black overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease; /* Smooth transition */
+  z-index: 2; /* Above the image */
+}
+
+.card-container:hover .overlay {
+  opacity: 1; /* Show overlay on hover */
+}
+
+.title {
+  color: white; /* White text color */
+  font-size: 1.5rem; /* Adjust font size */
+  font-weight: bold;
+  font-family: vergilia;
+  text-transform: capitalize; /* Capitalize the first letter */
 }
 </style>

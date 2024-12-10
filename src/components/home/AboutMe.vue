@@ -12,14 +12,10 @@
     </div>
     <div class="content_right">
       <p>
-        "Soy Estefanía Sandoval, diseñadora apasionada por la creación, el mundo
-        digital y el lenguaje informático. Con conocimientos sólidos en
-        marketing y experiencia en diversos programas de Adobe y herramientas de
-        diseño, siempre estoy en busca de nuevas ideas y oportunidades de
-        aprendizaje. Mi enfoque es combinar creatividad y tecnología para
-        desarrollar proyectos innovadores. Me considero una persona curiosa y
-        detallista, comprometida con aprovechar al máximo la tecnología en cada
-        proyecto y compartir ideas en un entorno colaborativo."
+        "Soy Estefanía Sandoval, diseñadora apasionada por la creación y el
+        mundo digital. Con experiencia en marketing y herramientas de diseño,
+        busco combinar creatividad y tecnología para desarrollar proyectos
+        innovadores. Soy curiosa, detallista y disfruto colaborar en equipo."
       </p>
     </div>
   </div>
@@ -41,18 +37,19 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start; /* Align items to the start of the left column */
+  font-family: rocabetrial;
 }
 
 .title {
   font-size: 32px; /* Increase font size of the title */
   margin-bottom: 20px; /* Space below the title */
-  color: #3afbf4; /* Optional: Change title color */
+  color: var(--title-about-me); /* Optional: Change title color */
 }
 
 .profile-image {
   width: 350px; /* Increase width of the image placeholder */
   height: 350px; /* Increase height of the image placeholder */
-  background-color: #ccc; /* Placeholder color */
+
   border-radius: 10px; /* Optional: Add rounded corners */
 }
 
@@ -60,7 +57,8 @@
   max-width: 600px; /* Increase max width for the text content */
   font-size: 18px; /* Increase font size for the text */
   line-height: 1.4; /* Improve line height for readability */
-  color: #8e3afb; /* Optional: Change text color */
+  color: var(--text-about-me);
+  font-family: rocabetrial;
 }
 
 @media (max-width: 768px) {

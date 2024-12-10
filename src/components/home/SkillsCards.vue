@@ -5,10 +5,18 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 const skillCards = [
-  { img_url: "/img/Iustracioncardimg.png", route: "ilustracion" },
-  { img_url: "/img/webcardimg.png", route: "web" },
-  { img_url: "/img/3Dimgcard2.png", route: "3d" },
-  { img_url: "/img/Videogamescardimg.png", route: "videojuegos" },
+  {
+    img_url: "/img/Iustracioncardimg.png",
+    route: "ilustracion",
+    title: "Ilustración",
+  },
+  { img_url: "/img/webcardimg.png", route: "web", title: "Web" },
+  { img_url: "/img/3Dimgcard2.png", route: "3d", title: "3D" },
+  {
+    img_url: "/img/Videogamescardimg.png",
+    route: "videojuegos",
+    title: "Videojuegos",
+  },
 ];
 
 const handleCardClick = (route) => {
@@ -24,6 +32,7 @@ const handleCardClick = (route) => {
         :key="index"
         class="skill-card"
         :img_url="card.img_url"
+        :title="card.route"
         @click="handleCardClick(card.route)"
       />
     </div>
