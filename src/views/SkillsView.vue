@@ -21,7 +21,7 @@
     />
   </div>
   <footer class="footer">
-    <img src="/img/Footer..png" alt="" class="footer_img" />
+    <img src="/img/Footer (3).png" alt="" class="footer_img" />
     <p class="p_footer">Always Creative</p>
   </footer>
 </template>
@@ -140,7 +140,7 @@ onMounted(async () => {
 .p_footer {
   position: absolute;
   z-index: 10;
-  top: 42%;
+  top: 28%;
   left: 10%;
   font-family: rocabetrial;
   color: var(--title-about-me);

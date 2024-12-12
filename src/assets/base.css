@@ -7,6 +7,7 @@
   --text-cardproject-shadow: rgba(246, 5, 169, 0.8);
   --text-about-me: #8e3afb;
   --title-about-me: #3afbf4;
+  --overlay-color-card: rgba(0, 255, 221, 0.5);
 }
 
 *,

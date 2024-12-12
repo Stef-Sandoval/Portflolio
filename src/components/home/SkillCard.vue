@@ -38,7 +38,7 @@ defineProps({
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 255, 221, 0.5); /* Semi-transparent black overlay */
+  background-color: var(--overlay-color-card);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,7 +52,7 @@ defineProps({
 }
 
 .title {
-  color: white; /* White text color */
+  color: var(--text-first-title); /* White text color */
   font-size: 1.5rem; /* Adjust font size */
   font-weight: bold;
   font-family: vergilia;
