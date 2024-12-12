@@ -20,6 +20,10 @@
       :project="project"
     />
   </div>
+  <footer class="footer">
+    <img src="/img/Footer..png" alt="" class="footer_img" />
+    <p class="p_footer">Always Creative</p>
+  </footer>
 </template>
 
 <script setup>
@@ -129,6 +133,19 @@ onMounted(async () => {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   object-fit: cover;
 }
+.footer_img {
+  width: 100%;
+  object-fit: cover;
+}
+.p_footer {
+  position: absolute;
+  z-index: 10;
+  top: 42%;
+  left: 10%;
+  font-family: rocabetrial;
+  color: var(--title-about-me);
+  font-size: 48px;
+}
 
 /* Animations */
 
@@ -166,12 +183,17 @@ onMounted(async () => {
   }
 
   .section-title {
-    font-size: 2.5rem; /* Tamaño de fuente 4rem */
+    font-size: 2rem; /* Tamaño de fuente 4rem */
     top: 60%;
     left: 30%;
   }
   .section-head-image-container {
     height: 100px;
+  }
+  .p_footer {
+    font-size: 14px;
+    top: 22%;
+    left: 8%;
   }
 }
 </style>

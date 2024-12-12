@@ -58,7 +58,7 @@
   font-size: 18px; /* Increase font size for the text */
   line-height: 1.4; /* Improve line height for readability */
   color: var(--text-about-me);
-  font-family: rocabetrial;
+  font-family: vergilia;
 }
 
 @media (max-width: 768px) {
