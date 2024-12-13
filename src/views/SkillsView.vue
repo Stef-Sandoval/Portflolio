@@ -21,8 +21,10 @@
     />
   </div>
   <footer class="footer">
-    <img src="/img/Footer (3).png" alt="" class="footer_img" />
+    <img src="/img/Footer.png" alt="" class="footer_img" />
+    <img src="/img/footercomp.png" alt="" class="footer_imgcomp" />
     <p class="p_footer">Always Creative</p>
+    <p class="p2_footer">Be Curious</p>
   </footer>
 </template>
 
@@ -133,18 +135,32 @@ onMounted(async () => {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   object-fit: cover;
 }
+.footer_imgcomp {
+  width: 100%;
+  object-fit: cover;
+}
 .footer_img {
   width: 100%;
   object-fit: cover;
+  display: none;
 }
 .p_footer {
   position: absolute;
   z-index: 10;
-  top: 28%;
+  top: 16%;
   left: 10%;
   font-family: rocabetrial;
   color: var(--title-about-me);
   font-size: 48px;
+}
+.p2_footer {
+  position: absolute;
+  z-index: 10;
+  top: 22%;
+  right: 18%;
+  font-family: rocabetrial;
+  color: var(--title-about-me);
+  font-size: 20px;
 }
 
 /* Animations */
@@ -176,7 +192,7 @@ onMounted(async () => {
   transform: translateY(-50%) rotate(0deg) scale(1.1); /* Zoom del 10% */
   transform: translateY(-50%) scale(1.2);
 }
-@media (max-width: 768px) {
+@media (max-width: 760px) {
   .section-image {
     width: 100px; /* Ancho 80% */
     height: 100px; /* Alto 80% */
@@ -190,10 +206,30 @@ onMounted(async () => {
   .section-head-image-container {
     height: 100px;
   }
+  .footer_img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+  }
   .p_footer {
     font-size: 14px;
     top: 22%;
     left: 8%;
+  }
+  .footer_imgcomp {
+    width: 100%;
+    object-fit: cover;
+    display: none;
+  }
+  .p2_footer {
+    position: absolute;
+    z-index: 10;
+    top: 22%;
+    right: 18%;
+    font-family: rocabetrial;
+    color: var(--title-about-me);
+    font-size: 20px;
+    display: none;
   }
 }
 </style>

@@ -49,7 +49,7 @@
 .profile-image {
   width: 350px; /* Increase width of the image placeholder */
   height: 350px; /* Increase height of the image placeholder */
-
+  object-fit: cover;
   border-radius: 10px; /* Optional: Add rounded corners */
 }
 
