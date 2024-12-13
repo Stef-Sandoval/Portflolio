@@ -20,7 +20,7 @@
       :project="project"
     />
   </div>
-  <footer class="footer">
+  <footer class="footer" v-if="projects.length > 0">
     <img src="/img/Footer.png" alt="" class="footer_img" />
     <img src="/img/footercomp.png" alt="" class="footer_imgcomp" />
     <p class="p_footer">Always Creative</p>
@@ -138,6 +138,7 @@ onMounted(async () => {
 .footer_imgcomp {
   width: 100%;
   object-fit: cover;
+  display: block;
 }
 .footer_img {
   width: 100%;
