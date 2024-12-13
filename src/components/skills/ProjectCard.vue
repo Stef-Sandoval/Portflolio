@@ -22,12 +22,6 @@
           alt="Project Slider Image"
           class="project-image"
         />
-        <button class="slider-button prev" @click.stop="prevImage">
-          &#8249;
-        </button>
-        <button class="slider-button next" @click.stop="nextImage">
-          &#8250;
-        </button>
       </div>
       <img
         v-else-if="project.img_1"
@@ -43,7 +37,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed, onMounted, onBeforeUnmount } from "vue";
 
 const props = defineProps({
   project: {
@@ -77,17 +71,31 @@ const projectImages = computed(() => {
 
 // Estado y funciones para el slider
 const currentImageIndex = ref(0);
+let intervalId = null;
 
-const nextImage = () => {
-  currentImageIndex.value =
-    (currentImageIndex.value + 1) % projectImages.value.length;
+const startAutoSlide = () => {
+  intervalId = setInterval(() => {
+    currentImageIndex.value =
+      (currentImageIndex.value + 1) % projectImages.value.length;
+  }, 2000);
 };
 
-const prevImage = () => {
-  currentImageIndex.value =
-    (currentImageIndex.value - 1 + projectImages.value.length) %
-    projectImages.value.length;
+const stopAutoSlide = () => {
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
 };
+
+onMounted(() => {
+  if (projectImages.value.length > 1) {
+    startAutoSlide();
+  }
+});
+
+onBeforeUnmount(() => {
+  stopAutoSlide();
+});
 </script>
 
 <style scoped>
@@ -150,30 +158,5 @@ video {
   position: relative;
   width: 100%;
   height: 100%;
-}
-
-.slider-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 3;
-}
-
-.slider-button.prev {
-  left: 10px;
-}
-
-.slider-button.next {
-  right: 10px;
 }
 </style>
