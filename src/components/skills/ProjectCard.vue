@@ -16,11 +16,14 @@
         playsinline
         class="project-video"
       ></video>
-      <div v-else-if="projectImages.length > 1" class="slider-container">
+      <div v-else-if="projectImages.length > 0" class="slider-container">
         <img
-          :src="projectImages[currentImageIndex]"
+          v-for="(image, index) in projectImages"
+          :key="index"
+          :src="image"
           alt="Project Slider Image"
           class="project-image"
+          :class="{ active: index === currentImageIndex }"
         />
       </div>
       <img
@@ -77,7 +80,7 @@ const startAutoSlide = () => {
   intervalId = setInterval(() => {
     currentImageIndex.value =
       (currentImageIndex.value + 1) % projectImages.value.length;
-  }, 2000);
+  }, 3000);
 };
 
 const stopAutoSlide = () => {
@@ -128,6 +131,12 @@ onBeforeUnmount(() => {
   position: absolute;
   top: 0;
   left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.project-image.active {
+  opacity: 1;
 }
 
 .project-name {
@@ -148,6 +157,7 @@ onBeforeUnmount(() => {
 .project-card:hover h2.project-name {
   opacity: 1; /* Mostrar el nombre al hacer hover */
 }
+
 video {
   width: 100%;
   height: 100%;
