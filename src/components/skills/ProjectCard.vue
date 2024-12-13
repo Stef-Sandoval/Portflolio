@@ -16,6 +16,19 @@
         playsinline
         class="project-video"
       ></video>
+      <div v-else-if="projectImages.length > 1" class="slider-container">
+        <img
+          :src="projectImages[currentImageIndex]"
+          alt="Project Slider Image"
+          class="project-image"
+        />
+        <button class="slider-button prev" @click.stop="prevImage">
+          &#8249;
+        </button>
+        <button class="slider-button next" @click.stop="nextImage">
+          &#8250;
+        </button>
+      </div>
       <img
         v-else-if="project.img_1"
         :src="project.img_1"
@@ -54,6 +67,27 @@ const cardStyle = computed(() => ({
   transform: hover.value ? "scale(1.05)" : "scale(1)",
   boxShadow: hover.value ? "0 0 20px rgba(45, 255, 249, 0.8)" : "none",
 }));
+
+// Computed property para obtener las imágenes del proyecto
+const projectImages = computed(() => {
+  return [props.project.img_1, props.project.img_2, props.project.img_3].filter(
+    (img) => !!img
+  );
+});
+
+// Estado y funciones para el slider
+const currentImageIndex = ref(0);
+
+const nextImage = () => {
+  currentImageIndex.value =
+    (currentImageIndex.value + 1) % projectImages.value.length;
+};
+
+const prevImage = () => {
+  currentImageIndex.value =
+    (currentImageIndex.value - 1 + projectImages.value.length) %
+    projectImages.value.length;
+};
 </script>
 
 <style scoped>
@@ -87,9 +121,11 @@ const cardStyle = computed(() => ({
   top: 0;
   left: 0;
 }
+
 .project-name {
   position: absolute;
 }
+
 .project-card h2.project-name {
   font-size: 1.5em;
   font-family: rocabetrial;
@@ -108,5 +144,36 @@ video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.slider-button.prev {
+  left: 10px;
+}
+
+.slider-button.next {
+  right: 10px;
 }
 </style>
